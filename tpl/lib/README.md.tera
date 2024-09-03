@@ -1,0 +1,15 @@
+{% set name = path | split(pat="/") | last %}
+# @bearz/{{name}}
+
+{{description}}
+
+## Usage
+```typescript
+import {} from "@bearz/{{name}}";
+
+// TODO: Write usage instructions here
+```
+
+## License
+
+[MIT License](./LICENSE.md)

@@ -1,0 +1,8 @@
+{
+    "name": "@bearz/assert",
+    "version": "0.0.0",
+    "description": "",
+    "exports": {
+        ".": "./mod.ts"
+    }
+}

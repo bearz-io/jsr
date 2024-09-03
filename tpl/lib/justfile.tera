@@ -1,0 +1,14 @@
+bash := if os() == "windows" { "bash.exe" } else { "/usr/bin/env bash" }
+
+
+lint: 
+    #!{{bash}}
+    deno lint . 
+
+fmt:
+    #!{{bash}}
+    deno fmt .
+
+test:
+    #!{{bash}}
+    deno task test .

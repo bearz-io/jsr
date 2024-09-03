@@ -1,0 +1,5 @@
+import { equal } from "@bearz/assert";
+
+Deno.test("hello world", () => {
+  equal(true, true);
+});

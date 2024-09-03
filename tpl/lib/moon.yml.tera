@@ -1,0 +1,18 @@
+{% set name = path | split(pat="/") | last %}
+id: bearz-{{ name }}
+language: typescript
+stack: systems
+project: 
+  description: "{%if description %}{{description}}{%else%}@bearz{{name}} module at ./{{path}}.{%endif%}"
+  name: "@bearz/{{name}}"
+  maintainers:
+    - 179951934+bowtiedbearz@users.noreply.github.com
+  metadata:
+    version: 0.0.0
+    kind: module
+    license: MIT
+    repo: https://github.com/bearz-io/jsr/{{path}}
+type: library
+tags:
+  - typescript
+  - {{ name }}

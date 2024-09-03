@@ -1,0 +1,9 @@
+{% set name = path | split(pat="/") | last %}
+{
+    "name": "@bearz/{{name}}",
+    "version": "0.0.0",
+    "description": "{{description}}",
+    "exports": {
+        ".": "./mod.ts"
+    }
+}
