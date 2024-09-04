@@ -36,6 +36,12 @@ importers:
         specifier: ^5.1.1
         version: 5.1.1
 
+  bearz/runtime-info:
+    devDependencies:
+      '@bearz/assert':
+        specifier: workspace:*
+        version: link:../assert
+
 packages:
 
   '@ampproject/remapping@2.3.0':

@@ -1,0 +1,52 @@
+{% set name = path | split(pat="/") | last %}
+{
+    "name": "@bearz/{{name}}",
+    "version": "0.0.0",
+    "description": "",
+    "type": "module",
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./src/mod.d.ts",
+                "default": "./src/mod.js"
+            }
+        }
+    },
+    "scripts": {
+        "test": "vitest",
+        "lint": "biome check",
+        "fmt": "biome format --write",
+        "build": "tsc",
+        "test:watch": "vitest --watch",
+        "test:run": "vitest run"
+    },
+    "files": [
+        "./src/**/*.d.ts",
+        "./src/**/*.js",
+        "./src/**/*.js.map",
+        "./src/**/*.d.ts.map",
+        "./README.md",
+        "./LICENSE.md",
+        "./CHANGELOG.md",
+        "./package.json"
+    ],
+    "engines": {
+        "node": ">=20.0.0"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@bearz/assert": "workspace:*"
+    },
+    "author": {
+        "name": "bearz.io",
+        "email": "github@bearz.io"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bearz-io/jsr.git"
+    },
+    "bugs": {
+        "url": "https://github.com/bearz-io/jsr/issues"
+    },
+    "homepage": "https://github.com/bearz-io/jsr/blob/main/npm/bearz/{{name}}/README.md"
+}

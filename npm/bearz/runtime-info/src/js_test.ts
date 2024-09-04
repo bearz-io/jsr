@@ -1,6 +1,5 @@
-
-import { equal, ok, no } from "@bearz/assert";
-import { RUNTIME, NODE, BUN, DENO, CLOUDFLARE, BROWSER, NODELIKE } from "./js.js";
+import { equal, no, ok } from "@bearz/assert";
+import { BROWSER, BUN, CLOUDFLARE, DENO, NODE, NODELIKE, RUNTIME } from "./js.js";
 
 // DO NOT REMOVE
 // This line is used by automation to convert to vitest
@@ -16,7 +15,7 @@ test("runtime-info::RUNTIME", () => {
         no(CLOUDFLARE, "CLOUDFLARE must be false");
         no(BROWSER, "BROWSER must be false");
         no(NODELIKE, "NODELIKE must be false");
-        return 
+        return;
     }
 
     if (g.Bun !== undefined) {
@@ -26,26 +25,26 @@ test("runtime-info::RUNTIME", () => {
         ok(BUN, "BUN must be true");
         no(CLOUDFLARE, "CLOUDFLARE must be false");
         no(BROWSER, "BROWSER must be false");
-        ok(NODELIKE)
-        return 
+        ok(NODELIKE);
+        return;
     }
 
     if (g.process !== undefined) {
         equal(RUNTIME, "node");
-        ok(DENO, "DENO must be false");
+        no(DENO, "DENO must be false");
         ok(NODE, "NODE must be true");
         no(BUN, "BUN must be false");
         no(CLOUDFLARE, "CLOUDFLARE must be false");
         no(BROWSER, "BROWSER must be false");
-        ok(NODELIKE)
-        return 
+        ok(NODELIKE);
+        return;
     }
 
     const navigator = g.navigator as Record<string, unknown> | undefined;
     const userAgent = navigator?.userAgent as string | undefined;
 
-    const cf : boolean = (navigator && userAgent
-        && userAgent.includes("Cloudflare-Workers")) || false;
+    const cf: boolean = (navigator && userAgent &&
+        userAgent.includes("Cloudflare-Workers")) || false;
 
     if (cf) {
         equal(RUNTIME, "cloudflare");
@@ -55,7 +54,7 @@ test("runtime-info::RUNTIME", () => {
         ok(CLOUDFLARE, "CLOUDFLARE must be true");
         no(BROWSER, "BROWSER must be false");
         no(NODELIKE, "NODELIKE must be false");
-        return 
+        return;
     }
 
     if (navigator && userAgent) {
@@ -66,7 +65,7 @@ test("runtime-info::RUNTIME", () => {
         no(CLOUDFLARE, "CLOUDFLARE must be false");
         ok(BROWSER, "BROWSER must be true");
         no(NODELIKE, "NODELIKE must be false");
-        return
+        return;
     }
 
     equal(RUNTIME, "unknown");
@@ -75,8 +74,4 @@ test("runtime-info::RUNTIME", () => {
     no(BUN, "BUN must be false");
     no(CLOUDFLARE, "CLOUDFLARE must be false");
     no(BROWSER, "BROWSER must be false");
-});
-
-test("runtime-info::runtime", () => {
-    equal(typeof Deno.build.os, "string");
 });

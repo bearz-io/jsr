@@ -1,9 +1,10 @@
-import { isAbsolute, fromFileUrl, dirname, resolve, isGlob, globToRegExp } from "jsr:/@std/path@1";
+import { isAbsolute, dirname, resolve, isGlob, globToRegExp } from "jsr:/@std/path@1";
 import { copy, ensureDir, exists, walk } from "jsr:/@std/fs@1";
+import { rd } from "./paths.ts"
 
 const args = Deno.args;
 let target = args[0];
-const root = dirname(dirname(fromFileUrl(import.meta.url)));
+const root = rd;
 
 if (!isAbsolute(target)) {
     if (target.startsWith("./")) {
@@ -16,9 +17,7 @@ if (!isAbsolute(target)) {
 const jsrPath = resolve(root, "jsr");
 const npmPath = resolve(root, "npm");
 
-const destDir = resolve(npmPath, target.substring(jsrPath.length + 1));
-
-let denoJsonPath = resolve(target, "deno.json");
+const denoJsonPath = resolve(target, "deno.json");
 const excludes : string[] = ["moon.yml", "deno.json", "justfile"];
 if (await exists(denoJsonPath)) {
     const context = await Deno.readTextFile(denoJsonPath);
