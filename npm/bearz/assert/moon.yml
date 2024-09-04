@@ -1,9 +1,9 @@
-id: npm-bearz-runtime-info
+id: npm-bearz-assert
 language: javascript
 stack: systems
 project: 
-  description: "@bearzruntime-info module at ./npm/bearz/runtime-info."
-  name: "npm @bearz/runtime-info"
+  description: "@bearz/assert module at ./npm/bearz/assert."
+  name: "npm @bearz/assert"
   maintainers:
     - 179951934+bowtiedbearz@users.noreply.github.com
   metadata:
@@ -11,8 +11,8 @@ project:
     kind: module
     ecosystem: node
     license: MIT
-    repo: https://github.com/bearz-io/jsr/npm/bearz/runtime-info
+    repo: https://github.com/bearz-io/jsr/npm/bearz/assert
 type: library
 tags:
   - javascript
-  - runtime-info
+  - assert

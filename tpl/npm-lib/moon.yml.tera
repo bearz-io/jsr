@@ -1,9 +1,10 @@
 {% set name = path | split(pat="/") | last %}
+{% set path2 = path | replace(from="./", to="") %}
 id: npm-bearz-{{ name }}
 language: javascript
 stack: systems
 project: 
-  description: "{%if description %}{{description}}{%else%}@bearz{{name}} module at ./{{path}}.{%endif%}"
+  description: "{%if description %}{{description}}{%else%}@bearz{{name}} module at ./{{path2}}.{%endif%}"
   name: "npm @bearz/{{name}}"
   maintainers:
     - 179951934+bowtiedbearz@users.noreply.github.com
@@ -12,7 +13,7 @@ project:
     kind: module
     ecosystem: node
     license: MIT
-    repo: https://github.com/bearz-io/jsr/{{path}}
+    repo: https://github.com/bearz-io/jsr/{{path2}}
 type: library
 tags:
   - javascript
