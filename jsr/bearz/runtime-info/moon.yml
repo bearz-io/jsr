@@ -1,0 +1,17 @@
+id: bearz-runtime-info
+language: typescript
+stack: systems
+project: 
+  description: "@bearzruntime-info module at ./jsr/bearz/runtime-info."
+  name: "@bearz/runtime-info"
+  maintainers:
+    - 179951934+bowtiedbearz@users.noreply.github.com
+  metadata:
+    version: 0.0.0
+    kind: module
+    license: MIT
+    repo: https://github.com/bearz-io/jsr/jsr/bearz/runtime-info
+type: library
+tags:
+  - typescript
+  - runtime-info

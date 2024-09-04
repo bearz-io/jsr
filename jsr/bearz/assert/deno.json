@@ -3,6 +3,10 @@
     "version": "0.0.0",
     "description": "",
     "exports": {
-        ".": "./mod.ts"
+        ".": "./src/mod.ts"
+    },
+
+    "copy": {
+        "exclude": ["**/mod.ts"]
     }
 }

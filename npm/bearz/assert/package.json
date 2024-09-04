@@ -1,0 +1,38 @@
+{
+    "name": "@bearz/assert",
+    "version": "0.0.0",
+    "description": "",
+    "type": "module",
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./src/mod.d.ts",
+                "default": "./src/mod.js"
+            }
+        }
+    },
+    "files": [
+        "./src/**/*.d.ts",
+        "./src/**/*.js",
+        "./src/**/*.js.map",
+        "./src/**/*.d.ts.map",
+        "./README.md",
+        "./LICENSE.md",
+        "./CHANGELOG.md",
+        "./package.json"
+    ],
+    "engines": {
+        "node": ">=20.0.0"
+    },
+    "dependencies": {
+        "chai": "^5.1.1"
+    },
+    "scripts": {
+        "test": "vitest",
+        "lint": "biome check",
+        "fmt": "biome format --write",
+        "build": "tsc",
+        "test:watch": "vitest --watch",
+        "test:run": "vitest run"
+    }
+}

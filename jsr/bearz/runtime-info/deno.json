@@ -1,0 +1,8 @@
+{
+    "name": "@bearz/runtime-info",
+    "version": "0.0.0",
+    "description": "",
+    "exports": {
+        ".": "./mod.ts"
+    }
+}

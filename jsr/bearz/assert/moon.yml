@@ -2,7 +2,7 @@ id: bearz-assert
 language: typescript
 stack: systems
 project: 
-  description: "@bearzassert module at ./std/assert."
+  description: "@bearzassert module at ./jsr/bearz/assert."
   name: "@bearz/assert"
   maintainers:
     - 179951934+bowtiedbearz@users.noreply.github.com
@@ -10,7 +10,7 @@ project:
     version: 0.0.0
     kind: module
     license: MIT
-    repo: https://github.com/bearz-io/jsr/std/assert
+    repo: https://github.com/bearz-io/jsr/jsr/bearz/assert
 type: library
 tags:
   - typescript
