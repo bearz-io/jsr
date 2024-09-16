@@ -32,7 +32,6 @@
     "engines": {
         "node": ">=20.0.0"
     },
-    "dependencies": {},
     "devDependencies": {
         "@bearz/assert": "workspace:*"
     },

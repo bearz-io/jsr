@@ -15,7 +15,8 @@ project:
 type: library
 platform: node
 dependsOn:
-  - npm-bearz-assert
+  - id: npm-bearz-assert
+    scope: development
 tags:
   - node
   - runtime-info
