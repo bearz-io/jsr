@@ -9,7 +9,7 @@ tasks:
 
   lint:
     description: Lint the typescript
-    command: deno task lint "$MOON_PROJECT_ROO/**/*.ts"
+    command: deno task lint "$MOON_PROJECT_ROOT/**/*.ts"
     type: test
     options: 
       os: linux
