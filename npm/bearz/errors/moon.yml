@@ -14,6 +14,8 @@ project:
     repo: https://github.com/bearz-io/jsr/npm/bearz/errors
 type: library
 platform: node
+dependsOn:
+  - npm-bearz-assert
 tags:
   - node
   - errors

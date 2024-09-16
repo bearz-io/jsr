@@ -14,6 +14,8 @@ project:
     repo: https://github.com/bearz-io/jsr/jsr/bearz/chars
 type: library
 platform: deno
+dependsOn:
+  - bearz-assert
 tags:
   - deno
   - chars

@@ -14,6 +14,8 @@ project:
     repo: https://github.com/bearz-io/jsr/npm/bearz/runtime-info
 type: library
 platform: node
+dependsOn:
+  - npm-bearz-assert
 tags:
   - node
   - runtime-info
