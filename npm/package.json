@@ -1,5 +1,13 @@
 {
     "private": true,
+    "scripts": {
+        "test": "vitest",
+        "lint": "biome check",
+        "fmt": "biome format --write",
+        "build": "tsc",
+        "test:watch": "vitest --watch",
+        "test:run": "vitest run"
+    },
     "devDependencies": {
         "@tsconfig/node20": "^20.1.4",
         "tsx": "^4.19.0",
@@ -7,6 +15,7 @@
         "@biomejs/biome": "^1.8.3",
         "chai": "^5.1.1",
         "typescript": "^5.2.2",
-        "@types/chai": "^4.3.19"
+        "@types/chai": "^4.3.19",
+        "@types/node": "^20.16.5"
     }
 }

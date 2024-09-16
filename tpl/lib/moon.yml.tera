@@ -11,8 +11,10 @@ project:
     version: 0.0.0
     kind: module
     license: MIT
+    ecosystem: deno
     repo: https://github.com/bearz-io/jsr/{{path}}
 type: library
+platform: deno
 tags:
-  - typescript
+  - deno
   - {{ name }}

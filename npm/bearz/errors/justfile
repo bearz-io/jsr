@@ -1,0 +1,17 @@
+bash := if os() == "windows" { "bash.exe" } else { "/usr/bin/env bash" }
+
+lint: 
+    #!{{bash}}
+    pnpm lint .
+
+fmt:
+    #!{{bash}}
+    pnpm fmt .
+
+test:
+    #!{{bash}}
+    pnpm test:run
+
+build:
+    #!{{bash}}
+    pnpm build

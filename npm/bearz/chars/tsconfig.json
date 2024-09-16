@@ -1,0 +1,9 @@
+{
+    "extends": "@tsconfig/node20/tsconfig.json",
+    "compileOnSave": true,
+    "compilerOptions": {
+        "declaration": true
+    },
+    "include": ["./src/**/*.ts"],
+    "exclude": ["./src/**/*_test.ts"]
+}

@@ -1,0 +1,19 @@
+id: bearz-errors
+language: typescript
+stack: systems
+project: 
+  description: "@bearz/errors module at ./jsr/bearz/errors."
+  name: "@bearz/errors"
+  maintainers:
+    - 179951934+bowtiedbearz@users.noreply.github.com
+  metadata:
+    version: 0.0.0
+    kind: module
+    license: MIT
+    ecosystem: deno
+    repo: https://github.com/bearz-io/jsr/jsr/bearz/errors
+type: library
+platform: deno
+tags:
+  - deno
+  - errors

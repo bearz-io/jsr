@@ -1,0 +1,10 @@
+{
+    "extends": "@tsconfig/node20/tsconfig.json",
+    "compileOnSave": true,
+    "compilerOptions": {
+        "declaration": true,
+        "lib": ["ES2023"]
+    },
+    "include": ["./src/**/*.ts"],
+    "exclude": ["./src/**/*_test.ts"]
+}

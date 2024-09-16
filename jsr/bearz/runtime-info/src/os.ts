@@ -1,13 +1,13 @@
 /**
  * ## Overview
  *
- * @gnome/os-constants provides constant values for basic os information
+ * @bearz/os-constants provides constant values for basic os information
  * such as `PLATFORM`, `ARCH`, `WINDOWS`, `DARWIN`, `PATH_SEP`, `DEV_NULL`.
  *
  * ## Basic Usage
  *
  * ```typescript
- * import * as os from "@gnome/os-constants";
+ * import * as os from "@bearz/os-constants";
  *
  * console.log(os.PLATFORM);
  * console.log(os.ARCH);
@@ -58,23 +58,23 @@ export type Architecture =
 
 let osArch: Architecture = "unknown";
 let osPlatform: OsPlatform = "unknown";
-// deno-lint-ignore no-explicit-any
-const g = globalThis as any;
+const g = globalThis as Record<string, unknown>;
 
 switch (RUNTIME) {
     case "bun":
     case "node":
         {
-            const p = g.process;
+            const p = g.process as Record<string, unknown>;
+            const platform = p.platform as string;
             if (p.platform === "win32") {
                 osPlatform = "windows";
             } else {
-                osPlatform = p.platform;
+                osPlatform = platform as OsPlatform;
             }
             if (p.arch === "x64") {
                 osArch = "amd64";
             } else {
-                osArch = p.arch;
+                osArch = p.arch as Architecture;
             }
         }
 
@@ -82,8 +82,11 @@ switch (RUNTIME) {
 
     case "deno":
         {
-            osPlatform = g.Deno.build.os;
-            switch (g.Deno.build.arch) {
+            const deno = g.Deno as Record<string, unknown>;
+            const build = deno.build as Record<string, unknown>;
+            const platform = build.os as string;
+            osPlatform = platform as OsPlatform;
+            switch (build.arch as string) {
                 case "x86_64":
                     osArch = "amd64";
                     break;
@@ -99,7 +102,9 @@ switch (RUNTIME) {
 
     case "browser":
         {
-            const ua = g.navigator.userAgent;
+            const navigator = g.navigator as Record<string, unknown> | undefined;
+            const userAgent = navigator?.userAgent as string | undefined;
+            const ua = userAgent as string;
             if (ua.includes("Win")) {
                 osPlatform = "windows";
             } else if (ua.includes("Linux") || ua.includes("X11")) {
@@ -132,7 +137,8 @@ switch (RUNTIME) {
                 const re =
                     /((?:avr32|ia64(?=;))|68k(?=\))|\barm(?=v(?:[1-7]|[5-7]1)l?|;|eabi)|(?=atmel )avr|(?:irix|mips|sparc)(?:64)?\b|pa-risc)/i;
                 if (re.test(ua)) {
-                    osArch = re.exec(ua)![1].toLowerCase() as Architecture;
+                    const m = re.exec(ua);
+                    osArch = !m ? "unknown" : m[1].toLowerCase() as Architecture;
                 } else {
                     osArch = "unknown";
                 }

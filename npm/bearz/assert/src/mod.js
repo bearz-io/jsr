@@ -1,27 +1,5 @@
 import { assert, AssertionError } from "chai";
-const {
-    equal,
-    closeTo,
-    ok,
-    notOk,
-    isBelow,
-    isAbove,
-    isAtLeast,
-    isAtMost,
-    throws,
-    deepOwnInclude,
-    fail,
-    exists,
-    strictEqual,
-    notEqual,
-    notStrictEqual,
-    match,
-    notMatch,
-    instanceOf,
-    notInstanceOf,
-    include,
-    includeDeepMembers,
-} = assert;
+const { equal, closeTo, ok, notOk, isBelow, isAbove, isAtLeast, isAtMost, throws, deepOwnInclude, fail, exists, strictEqual, notEqual, notStrictEqual, match, notMatch, instanceOf, notInstanceOf, include, includeDeepMembers, } = assert;
 /**
  * Use this to assert unreachable code.
  *
@@ -39,6 +17,7 @@ function unreachable(msg) {
     const msgSuffix = msg ? `: ${msg}` : ".";
     throw new AssertionError(`Unreachable${msgSuffix}`);
 }
+// biome-ignore lint/suspicious/noExplicitAny: false positive
 function arrayIncludes(actual, expected, msg) {
     return include(actual, expected, msg);
 }
@@ -48,6 +27,7 @@ function stringIncludes(actual, expected, msg) {
 function almostEqual(actual, expected, delta, msg) {
     return closeTo(actual, expected, delta, msg);
 }
+// biome-ignore lint/suspicious/noExplicitAny: false positive
 function objectMatch(actual, expected, msg) {
     return deepOwnInclude(actual, expected, msg);
 }
@@ -66,13 +46,10 @@ function greaterOrEqual(actual, expected, msg) {
 const no = notOk;
 const falsy = no;
 // https://github.com/chalk/ansi-regex/blob/02fa893d619d3da85411acc8fd4e2eea0e95a9d9/index.js
-const ANSI_PATTERN = new RegExp(
-    [
-        "[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]+)*|[a-zA-Z\\d]+(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)",
-        "(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TXZcf-nq-uy=><~]))",
-    ].join("|"),
-    "g",
-);
+const ANSI_PATTERN = new RegExp([
+    "[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]+)*|[a-zA-Z\\d]+(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)",
+    "(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TXZcf-nq-uy=><~]))",
+].join("|"), "g");
 /**
  * Remove ANSI escape codes from the string.
  *
@@ -113,22 +90,19 @@ function stripAnsiCode(string) {
  * @param msgMatches The optional string or RegExp to assert in the error message.
  * @param msg The optional message to display if the assertion fails.
  */
-function isError(
-    error,
-    // deno-lint-ignore no-explicit-any
-    ErrorClass,
-    msgMatches,
-    msg,
-) {
+function isError(error, 
+// deno-lint-ignore no-explicit-
+// biome-ignore lint/suspicious/noExplicitAny: false positive
+ErrorClass, msgMatches, msg) {
     const msgSuffix = msg ? `: ${msg}` : ".";
     if (!(error instanceof Error)) {
         throw new AssertionError(`Expected "error" to be an Error object${msgSuffix}}`);
     }
     if (ErrorClass && !(error instanceof ErrorClass)) {
-        // biome-ignore lint/suspicious/noExplicitAny: false positive
         msg = `Expected error to be instance of "${ErrorClass.name}", but was "${error?.constructor?.name}"${msgSuffix}`;
         throw new AssertionError(msg);
     }
+    // biome-ignore lint/suspicious/noImplicitAnyLet:
     let msgCheck;
     if (typeof msgMatches === "string") {
         msgCheck = stripAnsiCode(error.message).includes(stripAnsiCode(msgMatches));
@@ -137,9 +111,7 @@ function isError(
         msgCheck = msgMatches.test(stripAnsiCode(error.message));
     }
     if (msgMatches && !msgCheck) {
-        msg = `Expected error message to include ${
-            msgMatches instanceof RegExp ? msgMatches.toString() : JSON.stringify(msgMatches)
-        }, but got ${JSON.stringify(error?.message)}${msgSuffix}`;
+        msg = `Expected error message to include ${msgMatches instanceof RegExp ? msgMatches.toString() : JSON.stringify(msgMatches)}, but got ${JSON.stringify(error?.message)}${msgSuffix}`;
         throw new AssertionError(msg);
     }
 }
@@ -161,21 +133,23 @@ function unimplemented(msg) {
     throw new AssertionError(`Unimplemented${msgSuffix}`);
 }
 async function rejects(fn, errorClassOrMsg, msgIncludesOrMsg, msg) {
-    // deno-lint-ignore no-explicit-any
+    // deno-lint-ignore no-explicit-
+    // biome-ignore lint/suspicious/noExplicitAny: false positive
     let ErrorClass = undefined;
     let msgIncludes = undefined;
+    // biome-ignore lint/suspicious/noImplicitAnyLet:
     let err;
     if (typeof errorClassOrMsg !== "string") {
-        if (
-            errorClassOrMsg === undefined ||
+        if (errorClassOrMsg === undefined ||
             errorClassOrMsg.prototype instanceof Error ||
-            errorClassOrMsg.prototype === Error.prototype
-        ) {
+            errorClassOrMsg.prototype === Error.prototype) {
             // deno-lint-ignore no-explicit-any
+            // biome-ignore lint/suspicious/noExplicitAny: false positive
             ErrorClass = errorClassOrMsg;
             msgIncludes = msgIncludesOrMsg;
         }
-    } else {
+    }
+    else {
         msg = errorClassOrMsg;
     }
     let doesThrow = false;
@@ -183,17 +157,17 @@ async function rejects(fn, errorClassOrMsg, msgIncludesOrMsg, msg) {
     const msgSuffix = msg ? `: ${msg}` : ".";
     try {
         const possiblePromise = fn();
-        if (
-            possiblePromise &&
+        if (possiblePromise &&
             typeof possiblePromise === "object" &&
-            typeof possiblePromise.then === "function"
-        ) {
+            typeof possiblePromise.then === "function") {
             isPromiseReturned = true;
             await possiblePromise;
-        } else {
+        }
+        else {
             throw Error();
         }
-    } catch (error) {
+    }
+    catch (error) {
         if (!isPromiseReturned) {
             throw new AssertionError(`Function throws when expected to reject${msgSuffix}`);
         }
@@ -211,35 +185,7 @@ async function rejects(fn, errorClassOrMsg, msgIncludesOrMsg, msg) {
     }
     return err;
 }
-export {
-    almostEqual,
-    arrayIncludes,
-    ok as assert,
-    equal,
-    exists,
-    fail,
-    notOk as falsy,
-    greater,
-    greaterOrEqual,
-    instanceOf,
-    isError,
-    less,
-    lessOrEqual,
-    match,
-    no,
-    notEqual,
-    notInstanceOf,
-    notMatch,
-    notStrictEqual,
-    objectMatch,
-    ok,
-    rejects,
-    strictEqual,
-    stringIncludes,
-    throws,
-    unimplemented,
-    unreachable,
-};
+export { almostEqual, arrayIncludes, ok as assert, equal, exists, fail, notOk as falsy, greater, greaterOrEqual, instanceOf, isError, less, lessOrEqual, match, no, notEqual, notInstanceOf, notMatch, notStrictEqual, objectMatch, ok, rejects, strictEqual, stringIncludes, throws, unimplemented, unreachable, };
 export default {
     ok,
     falsy,

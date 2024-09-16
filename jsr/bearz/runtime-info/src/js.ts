@@ -8,7 +8,7 @@
  * ## Basic Usage
  *
  * ```typescript
- * import { RUNTIME, BUN, DENO, NODE, BROWSER, CLOUDFLARE } from "@gnome/runtime-constants";
+ * import { RUNTIME, BUN, DENO, NODE, BROWSER, CLOUDFLARE } from "@bearz/runtime-constants";
  *
  * console.log(RUNTIME);
  * console.log("bun", BUN);
@@ -21,8 +21,7 @@
  * [MIT License](./LICENSE.md)
  */
 
-// deno-lint-ignore no-explicit-any
-const g = globalThis as any;
+const g = globalThis as Record<string, unknown | Record<string, unknown | Record<string, unknown>>>;
 /**
  * Returns true if the runtime is `bun`, otherwise, `false`.
  */
@@ -41,11 +40,13 @@ export const NODELIKE = g.process !== undefined;
  */
 export const NODE = !BUN && NODELIKE;
 
+const nav = g.navigator as Record<string, unknown> | undefined;
+const userAgent = nav?.userAgent as string | undefined;
+
 /**
  * Returns `true` if the runtime is `cloudflare`, otherwise, `false`.
  */
-export const CLOUDFLARE: boolean = (g.navigator && g.navigator.userAgent &&
-    g.navigator.userAgent.includes("Cloudflare-Workers")) || false;
+export const CLOUDFLARE: boolean = (userAgent?.includes("Cloudflare-Workers")) || false;
 
 /**
  * Returns `true` if the runtime is a  `browser`, otherwise, `false`.
@@ -57,17 +58,24 @@ let runtimeName: Runtimes = "unknown";
 let version = "";
 let nodeVersion = "";
 if (BUN) {
+    const bun = g.Bun as Record<string, unknown>;
+    const process = g.process as Record<string, unknown>;
+    const versions = process.versions as Record<string, unknown>;
     runtimeName = "bun";
-    version = g.Bun.version;
-    nodeVersion = g.process.versions.node;
+    version = bun.version as string;
+    nodeVersion = versions.node as string;
 } else if (DENO) {
     runtimeName = "deno";
-    version = g.Deno.version.deno;
+    const deno = g.Deno as Record<string, unknown>;
+    const v = deno.version as Record<string, unknown>;
+    version = v.deno as string;
 } else if (CLOUDFLARE) {
     runtimeName = "cloudflare";
 } else if (NODE) {
     runtimeName = "node";
-    nodeVersion = g.process.versions.node;
+    const process = g.process as Record<string, unknown>;
+    const versions = process.versions as Record<string, unknown>;
+    nodeVersion = versions.node as string;
     version = nodeVersion;
 } else if (BROWSER) {
     runtimeName = "browser";

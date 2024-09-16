@@ -1,0 +1,15 @@
+
+tasks:
+  test:
+    description: Run the deno tests
+    script: deno task test "$MOON_PROJECT_ROOT"
+
+  lint:
+    description: Lint the typescript
+    command: deno task lint "$MOON_PROJECT_ROOT"
+
+  fmt:
+    description: Format the typescript
+    command: deno task fmt "$MOON_PROJECT_ROOT"
+
+   

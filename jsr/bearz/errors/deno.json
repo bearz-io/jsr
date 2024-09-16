@@ -1,0 +1,28 @@
+{
+    "name": "@bearz/errors",
+    "version": "0.0.0",
+    "description": "Various common errors and error utilities",
+    "exports": {
+        ".": "./src/mod.ts",
+        "./abstractsion": "./src/abstractions.ts",
+        "./abort-error": "./src/abort_error.ts",
+        "./access-error": "./src/access_error.ts",
+        "./argument-error": "./src/argument_error.ts",
+        "./argument-null-error": "./src/argument_null_error.ts",
+        "./argument-range-error": "./src/argument_range_error.ts",
+        "./argument-empty-error": "./src/argument_empty_error.ts",
+        "./assertion-error": "./src/assertion_error.ts",
+        "./collect": "./src/collect.ts",
+        "./error-info": "./src/error_info.ts",
+        "./format-error": "./src/format_error.ts",
+        "./invalid-cast-error": "./src/invalid_cast_error.ts",
+        "./invalid-operation-error": "./src/invalid_operation_error.ts",
+        "./not-implemented-error": "./src/not_implemented_error.ts",
+        "./not-supported-error": "./src/not_supported_error.ts",
+        "./object-disposed-error": "./src/object_disposed_error.ts",
+        "./response-error": "./src/response_error.ts",
+        "./stacktract": "./src/stacktrace.ts",
+        "./timeout-error": "./src/timeout_error.ts",
+        "./walk": "./src/walk.ts"
+    }
+}

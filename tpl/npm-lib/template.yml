@@ -1,0 +1,14 @@
+id: npm-lib
+title: Npm module
+description: A Npm library template that is copied from deno.
+variables:
+   path: 
+      type: string
+      required: true
+      order: 1
+      prompt: "Path to the library"
+   description: 
+      type: string
+      required: false
+      order: 2
+      prompt: "Description of the library"

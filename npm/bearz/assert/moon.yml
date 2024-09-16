@@ -1,0 +1,19 @@
+id: npm-bearz-assert
+language: javascript
+stack: systems
+project: 
+  description: "@bearz/assert module at ./npm/bearz/assert."
+  name: "npm @bearz/assert"
+  maintainers:
+    - 179951934+bowtiedbearz@users.noreply.github.com
+  metadata:
+    version: 0.0.0
+    kind: module
+    ecosystem: node
+    license: MIT
+    repo: https://github.com/bearz-io/jsr/npm/bearz/assert
+type: library
+platform: node
+tags:
+  - node
+  - assert

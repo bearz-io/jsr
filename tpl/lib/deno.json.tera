@@ -4,6 +4,6 @@
     "version": "0.0.0",
     "description": "{{description}}",
     "exports": {
-        ".": "./mod.ts"
+        ".": "./src/mod.ts"
     }
 }
