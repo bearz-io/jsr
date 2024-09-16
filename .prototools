@@ -4,5 +4,6 @@ node = "~20"
 pnpm = "~9"
 
 [plugins]
+biome = "https://raw.githubusercontent.com/Phault/proto-toml-plugins/main/biome/plugin.toml"
 just = "https://raw.githubusercontent.com/Phault/proto-toml-plugins/main/just/plugin.toml"
 moon = "https://raw.githubusercontent.com/moonrepo/moon/master/proto-plugin.toml"
