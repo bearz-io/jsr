@@ -3,13 +3,23 @@ tasks:
   test:
     description: Run the deno tests
     script: deno task test "$MOON_PROJECT_ROOT"
+    type: test
+    deps:
+      - lint
 
   lint:
     description: Lint the typescript
-    command: deno task lint "$MOON_PROJECT_ROOT"
+    command: deno task lint "$MOON_PROJECT_ROOT/**/*.ts"
+    type: test
 
   fmt:
     description: Format the typescript
     command: deno task fmt "$MOON_PROJECT_ROOT"
+    local: true
 
+  publish-dry:
+    description: Dry publish the package
+    command: deno publish --dry-run --allow-dirty
+    deps:
+      - test
    

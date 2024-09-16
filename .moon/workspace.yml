@@ -15,5 +15,9 @@ projects:
   - 'jsr/bearz/*'
   - 'npm/bearz/*'
 
+vcs:
+  defaultBranch: main
+  manager: git
+
 generator:
   templates: ["./tpl"]
