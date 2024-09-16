@@ -14,5 +14,9 @@ project:
     repo: https://github.com/bearz-io/jsr/jsr/bearz/assert
 type: library
 tags:
-  - typescript
+  - deno
   - assert
+
+tasks:
+  test2:
+    extends: test

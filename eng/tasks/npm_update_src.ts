@@ -1,6 +1,6 @@
-import { isAbsolute, dirname, resolve, isGlob, globToRegExp } from "jsr:/@std/path@1";
+import { dirname, globToRegExp, isAbsolute, isGlob, resolve } from "jsr:/@std/path@1";
 import { copy, ensureDir, exists, walk } from "jsr:/@std/fs@1";
-import { rd } from "./paths.ts"
+import { rd } from "./paths.ts";
 
 const args = Deno.args;
 let target = args[0];
@@ -18,7 +18,7 @@ const jsrPath = resolve(root, "jsr");
 const npmPath = resolve(root, "npm");
 
 const denoJsonPath = resolve(target, "deno.json");
-const excludes : string[] = ["moon.yml", "deno.json", "justfile"];
+const excludes: string[] = ["moon.yml", "deno.json", "justfile"];
 if (await exists(denoJsonPath)) {
     const context = await Deno.readTextFile(denoJsonPath);
     const json = JSON.parse(context);
@@ -31,31 +31,35 @@ if (await exists(denoJsonPath)) {
     }
 }
 
-
-
-for await (const entry of walk(target, { includeDirs: false, includeFiles: true, includeSymlinks: false, match: [/^(?!.*node_modules).*/] })) {
-    
-    console.log("")
-    console.log(entry.path)
+for await (
+    const entry of walk(target, {
+        includeDirs: false,
+        includeFiles: true,
+        includeSymlinks: false,
+        match: [/^(?!.*node_modules).*/],
+    })
+) {
+    console.log("");
+    console.log(entry.path);
     let skip = false;
     for (const exp of excludes) {
         if (isGlob(exp)) {
             if (globToRegExp(exp).test(entry.path)) {
                 skip = true;
-                continue
+                continue;
             }
         } else if (entry.path.replaceAll("\\", "/").endsWith(exp)) {
             skip = true;
-            continue
+            continue;
         }
     }
 
     if (skip) {
         console.log("skipping", entry.path, true);
-        continue
+        continue;
     }
 
-    if ( entry.name.endsWith(".ts") && !entry.name.endsWith(".d.ts")) {
+    if (entry.name.endsWith(".ts") && !entry.name.endsWith(".d.ts")) {
         const isTest = entry.name.endsWith("_test.ts");
         const content = await Deno.readTextFile(entry.path);
         const lines = content.split(/\r?\n/g);
@@ -65,24 +69,24 @@ for await (const entry of walk(target, { includeDirs: false, includeFiles: true,
         while (i < lines.length) {
             const line = lines[i];
             if (isTest) {
-                if (line.includes(" \"ignore\": ")) {
-                    newLines.push(line.replace(" \"ignore\":", " skip: "));
+                if (line.includes(' "ignore": ')) {
+                    newLines.push(line.replace(' "ignore":', " skip: "));
                     update = true;
                     i++;
-                    continue
+                    continue;
                 }
                 if (line.includes(" ignore: ")) {
                     newLines.push(line.replace(" ignore: ", " skip: "));
                     update = true;
                     i++;
-                    continue
+                    continue;
                 }
 
                 if (line.startsWith("const test = Deno.test;")) {
                     newLines.push("const { test } = await import('vitest')");
                     update = true;
                     i++;
-                    continue
+                    continue;
                 }
 
                 // everything below this line is deno specific
@@ -91,47 +95,46 @@ for await (const entry of walk(target, { includeDirs: false, includeFiles: true,
                     break;
                 }
             }
-           
 
-            if (line.endsWith(".ts\"")) {
-                newLines.push(line.replace(".ts\"", ".js\""));
+            if (line.endsWith('.ts"')) {
+                newLines.push(line.replace('.ts"', '.js"'));
                 update = true;
                 i++;
-                continue
-            } else if (line.endsWith(".ts\";")) {
-                newLines.push(line.replace(".ts\";", ".js\";"));
+                continue;
+            } else if (line.endsWith('.ts";')) {
+                newLines.push(line.replace('.ts";', '.js";'));
                 update = true;
                 i++;
-                continue
+                continue;
             }
-         
 
             newLines.push(line);
 
             i++;
         }
 
-        
         if (update) {
             console.log("updating", entry.path);
-            const destFile = resolve(npmPath, entry.path.substring(jsrPath.length + 1))
+            const destFile = resolve(npmPath, entry.path.substring(jsrPath.length + 1));
             const dir = dirname(destFile);
             await ensureDir(dir);
 
-            await Deno.writeTextFile(destFile, newLines.join(Deno.build.os === "windows" ? "\r\n" : "\n"));
+            await Deno.writeTextFile(
+                destFile,
+                newLines.join(Deno.build.os === "windows" ? "\r\n" : "\n"),
+            );
         } else {
-            const destFile = resolve(npmPath, entry.path.substring(jsrPath.length + 1))
+            const destFile = resolve(npmPath, entry.path.substring(jsrPath.length + 1));
             const dir = dirname(destFile);
             await ensureDir(dir);
             await copy(entry.path, destFile, { overwrite: true, preserveTimestamps: true });
         }
     } else {
-        const destFile = resolve(npmPath, entry.path.substring(jsrPath.length + 1))
+        const destFile = resolve(npmPath, entry.path.substring(jsrPath.length + 1));
         console.log("src", entry.path);
         console.log("dest", destFile);
         const dir = dirname(destFile);
         await ensureDir(dir);
         await copy(entry.path, destFile, { overwrite: true, preserveTimestamps: true });
     }
-   
 }

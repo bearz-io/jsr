@@ -14,5 +14,5 @@ project:
     repo: https://github.com/bearz-io/jsr/npm/bearz/runtime-info
 type: library
 tags:
-  - javascript
+  - node
   - runtime-info

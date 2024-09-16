@@ -1,0 +1,18 @@
+id: bearz-chars
+language: typescript
+stack: systems
+project: 
+  description: "@bearzchars module at ./jsr/bearz/chars."
+  name: "@bearz/chars"
+  maintainers:
+    - 179951934+bowtiedbearz@users.noreply.github.com
+  metadata:
+    version: 0.0.0
+    kind: module
+    license: MIT
+    ecosystem: deno
+    repo: https://github.com/bearz-io/jsr/jsr/bearz/chars
+type: library
+tags:
+  - typescript
+  - chars

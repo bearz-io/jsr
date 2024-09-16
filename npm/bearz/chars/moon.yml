@@ -1,0 +1,18 @@
+id: npm-bearz-chars
+language: javascript
+stack: systems
+project: 
+  description: "@bearzchars module at ./npm/bearz/chars."
+  name: "npm @bearz/chars"
+  maintainers:
+    - 179951934+bowtiedbearz@users.noreply.github.com
+  metadata:
+    version: 0.0.0
+    kind: module
+    ecosystem: node
+    license: MIT
+    repo: https://github.com/bearz-io/jsr/npm/bearz/chars
+type: library
+tags:
+  - javascript
+  - chars

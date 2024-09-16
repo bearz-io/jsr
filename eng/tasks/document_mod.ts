@@ -1,6 +1,6 @@
 import { dirname, isAbsolute, join, resolve } from "jsr:/@std/path@1";
 import { walk } from "jsr:/@std/fs@1";
-import { rd } from "./paths.ts"
+import { rd } from "./paths.ts";
 
 const args = Deno.args;
 let target = args[0];
@@ -12,7 +12,6 @@ if (!isAbsolute(target)) {
     target = resolve(rd, target);
 }
 
-
 function isFile(path: string) {
     return Deno.lstat(path).then((stat) => stat.isFile).catch(() => false);
 }
@@ -20,8 +19,6 @@ function isFile(path: string) {
 console.log("scanning", target);
 for await (const entry of walk(target)) {
     if (entry.isDirectory) {
-
-        
         const mod = join(entry.path, "mod.ts");
         let readme = join(entry.path, "README.md");
 
@@ -33,7 +30,6 @@ for await (const entry of walk(target)) {
 
         console.log("mod", mod);
         console.log("readme", readme);
-
 
         if (await isFile(mod) && await isFile(readme)) {
             const readmeContent = await Deno.readTextFile(readme);

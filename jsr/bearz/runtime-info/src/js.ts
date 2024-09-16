@@ -8,7 +8,7 @@
  * ## Basic Usage
  *
  * ```typescript
- * import { RUNTIME, BUN, DENO, NODE, BROWSER, CLOUDFLARE } from "@gnome/runtime-constants";
+ * import { RUNTIME, BUN, DENO, NODE, BROWSER, CLOUDFLARE } from "@bearz/runtime-constants";
  *
  * console.log(RUNTIME);
  * console.log("bun", BUN);

@@ -5,7 +5,11 @@
         "indentWidth": 4
     },
 
-    "exclude": ["./std/assert/npm"],
+    "lint": {
+        "exclude": ["./npm/**/*"]
+    },
+
+    "exclude": ["./std/assert/npm/**/*"],
 
     "compilerOptions": {
         "lib": [
@@ -13,8 +17,12 @@
         ]
     },
 
+    "test": {
+        "exclude": ["./npm/**/*"]
+    },
+
     "tasks": {
-        "test": "deno test -A --unstable-ffi",
+        "test": "echo \"$PWD\" && echo 'hello world' && deno test -A --unstable-ffi",
         "npm:copy": "deno run -A ./eng/tasks/npm_update_src.ts",
         "doc:mod": "deno run -A ./eng/tasks/document_mod.ts",
         "lint": "deno lint",
@@ -23,6 +31,8 @@
 
     "workspace": [
         "./jsr/bearz/assert",
+        "./jsr/bearz/chars",
+        "./jsr/bearz/errors",
         "./jsr/bearz/runtime-info"
     ],
     "imports": { "@std/assert": "jsr:@std/assert@^1.0.3", "@std/fs": "jsr:@std/fs@^1.0.2" }

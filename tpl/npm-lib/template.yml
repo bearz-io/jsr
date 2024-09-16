@@ -7,4 +7,8 @@ variables:
       required: true
       order: 1
       prompt: "Path to the library"
-  
+   description: 
+      type: string
+      required: false
+      order: 2
+      prompt: "Description of the library"

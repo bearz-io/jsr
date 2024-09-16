@@ -1,0 +1,20 @@
+
+tasks:
+  build:
+    description: Transpile the typescript to javascript
+    command: pnpm build
+
+  test:
+    description: Run the vitest tests
+    command: pnpm test:run 
+
+
+  lint:
+    description: Lint the typescript
+    command: pnpm lint
+
+  fmt:
+    description: Format the typescript
+    command: pnpm fmt
+
+   

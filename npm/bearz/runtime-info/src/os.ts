@@ -1,13 +1,13 @@
 /**
  * ## Overview
  *
- * @gnome/os-constants provides constant values for basic os information
+ * @bearz/os-constants provides constant values for basic os information
  * such as `PLATFORM`, `ARCH`, `WINDOWS`, `DARWIN`, `PATH_SEP`, `DEV_NULL`.
  *
  * ## Basic Usage
  *
  * ```typescript
- * import * as os from "@gnome/os-constants";
+ * import * as os from "@bearz/os-constants";
  *
  * console.log(os.PLATFORM);
  * console.log(os.ARCH);

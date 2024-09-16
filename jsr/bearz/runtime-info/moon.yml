@@ -14,5 +14,5 @@ project:
     repo: https://github.com/bearz-io/jsr/jsr/bearz/runtime-info
 type: library
 tags:
-  - typescript
+  - deno
   - runtime-info
