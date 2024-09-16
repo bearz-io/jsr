@@ -29,7 +29,10 @@ test("runtime-info::os", () => {
         case "node":
             {
                 const process = g.process as Record<string, unknown>;
-                const platform = process.platform as string;
+                let platform = process.platform as string;
+                if (platform === "win32") {
+                    platform = "windows";
+                }
                 equal(PLATFORM, platform);
             }
             return;
