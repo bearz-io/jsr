@@ -25,6 +25,7 @@ tasks:
     options:
       os: linux
 
+
   fmt:
     description: Format the typescript
     command: pnpm run fmt

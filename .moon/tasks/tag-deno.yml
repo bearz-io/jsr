@@ -11,6 +11,15 @@ tasks:
     description: Lint the typescript
     command: deno task lint "$MOON_PROJECT_ROOT/**/*.ts"
     type: test
+    options: 
+      os: linux
+
+  lint-win:
+    description: Lint the typescript
+    command: deno task lint "$MOON_PROJECT_ROOT\**\*.ts"
+    type: test
+    options: 
+      os: windows
 
   fmt:
     description: Format the typescript
