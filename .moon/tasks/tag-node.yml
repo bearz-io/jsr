@@ -22,6 +22,8 @@ tasks:
     description: Lint the typescript
     command: pnpm run lint
     type: test
+    options:
+      os: linux
 
   fmt:
     description: Format the typescript
