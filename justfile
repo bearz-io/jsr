@@ -69,3 +69,8 @@ test mod:
     pushd ./npm/${mod}
     pnpm test:run
     popd
+
+
+npm-fmt:
+    #!{{bash}}
+    moon run :fmt --query ""

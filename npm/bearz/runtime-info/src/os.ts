@@ -138,7 +138,7 @@ switch (RUNTIME) {
                     /((?:avr32|ia64(?=;))|68k(?=\))|\barm(?=v(?:[1-7]|[5-7]1)l?|;|eabi)|(?=atmel )avr|(?:irix|mips|sparc)(?:64)?\b|pa-risc)/i;
                 if (re.test(ua)) {
                     const m = re.exec(ua);
-                    osArch = !m ? "unknown" : m[1].toLowerCase() as Architecture;
+                    osArch = !m ? "unknown" : (m[1].toLowerCase() as Architecture);
                 } else {
                     osArch = "unknown";
                 }

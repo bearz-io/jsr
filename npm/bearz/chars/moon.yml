@@ -2,7 +2,7 @@ id: npm-bearz-chars
 language: javascript
 stack: systems
 project: 
-  description: "@bearzchars module at ./npm/bearz/chars."
+  description: "@bearz/chars module at ./npm/bearz/chars."
   name: "npm @bearz/chars"
   maintainers:
     - 179951934+bowtiedbearz@users.noreply.github.com
@@ -13,6 +13,7 @@ project:
     license: MIT
     repo: https://github.com/bearz-io/jsr/npm/bearz/chars
 type: library
+platform: node
 tags:
-  - javascript
+  - node
   - chars

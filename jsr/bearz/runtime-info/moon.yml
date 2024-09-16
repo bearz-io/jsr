@@ -13,6 +13,7 @@ project:
     ecosystem: deno
     repo: https://github.com/bearz-io/jsr/jsr/bearz/runtime-info
 type: library
+platform: deno
 tags:
   - deno
   - runtime-info

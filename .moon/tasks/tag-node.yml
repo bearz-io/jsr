@@ -1,20 +1,28 @@
 
 tasks:
+  install:
+    description: Install the dependencies
+    command: pnpm install
+
   build:
     description: Transpile the typescript to javascript
-    command: pnpm build
+    command: pnpm run build
 
   test:
     description: Run the vitest tests
-    command: pnpm test:run 
-
+    command: pnpm run test:run 
 
   lint:
     description: Lint the typescript
-    command: pnpm lint
+    command: pnpm run lint
 
   fmt:
     description: Format the typescript
-    command: pnpm fmt
+    command: pnpm run fmt
 
-   
+  ci-build:
+    description: Build the project
+    command: pnpm run build
+    deps:
+      - install
+      - build

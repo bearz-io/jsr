@@ -13,10 +13,7 @@ project:
     ecosystem: deno
     repo: https://github.com/bearz-io/jsr/jsr/bearz/assert
 type: library
+platform: deno
 tags:
   - deno
   - assert
-
-tasks:
-  test2:
-    extends: test

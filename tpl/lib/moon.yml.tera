@@ -14,6 +14,7 @@ project:
     ecosystem: deno
     repo: https://github.com/bearz-io/jsr/{{path}}
 type: library
+platform: deno
 tags:
-  - typescript
+  - deno
   - {{ name }}

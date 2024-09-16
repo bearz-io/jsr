@@ -1,6 +1,6 @@
 {
   "files": {
-    "ignore": ["**/*.d.ts"]
+    "ignore": ["**/*.d.ts", "**/*.js"]
   },
   "formatter": {
     "enabled": true,

@@ -3,7 +3,7 @@ import { BROWSER, BUN, CLOUDFLARE, DENO, NODE, NODELIKE, RUNTIME } from "./js.js
 
 // DO NOT REMOVE
 // This line is used by automation to convert to vitest
-const { test } = await import('vitest')
+const { test } = await import("vitest");
 
 const g = globalThis as Record<string, unknown>;
 test("runtime-info::RUNTIME", () => {
@@ -43,8 +43,8 @@ test("runtime-info::RUNTIME", () => {
     const navigator = g.navigator as Record<string, unknown> | undefined;
     const userAgent = navigator?.userAgent as string | undefined;
 
-    const cf: boolean = (navigator && userAgent &&
-        userAgent.includes("Cloudflare-Workers")) || false;
+    const cf: boolean =
+        (navigator && userAgent && userAgent.includes("Cloudflare-Workers")) || false;
 
     if (cf) {
         equal(RUNTIME, "cloudflare");

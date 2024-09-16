@@ -2,7 +2,7 @@ id: npm-bearz-errors
 language: javascript
 stack: systems
 project: 
-  description: "@bearzerrors module at ./npm/bearz/errors."
+  description: "@bearz/errors module at ./npm/bearz/errors."
   name: "npm @bearz/errors"
   maintainers:
     - 179951934+bowtiedbearz@users.noreply.github.com
@@ -13,6 +13,7 @@ project:
     license: MIT
     repo: https://github.com/bearz-io/jsr/npm/bearz/errors
 type: library
+platform: node
 tags:
-  - javascript
+  - node
   - errors

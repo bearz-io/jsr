@@ -16,7 +16,7 @@ import {
 
 // DO NOT REMOVE
 // This line is used by automation to convert to vitest
-const { test } = await import('vitest')
+const { test } = await import("vitest");
 
 const g = globalThis as Record<string, unknown>;
 

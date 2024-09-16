@@ -1,7 +1,6 @@
 import type { ErrorInfo, ResponseErrorOptions, RespsonseErrorInfo } from "./abstractions.js";
 import { errorInfo } from "./error_info.js";
 
-
 export class ResponseError extends Error {
     constructor(request: Request);
     constructor(message: string);

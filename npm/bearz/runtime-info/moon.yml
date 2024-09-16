@@ -2,7 +2,7 @@ id: npm-bearz-runtime-info
 language: javascript
 stack: systems
 project: 
-  description: "@bearzruntime-info module at ./npm/bearz/runtime-info."
+  description: "@bearz/runtime-info module at ./npm/bearz/runtime-info."
   name: "npm @bearz/runtime-info"
   maintainers:
     - 179951934+bowtiedbearz@users.noreply.github.com
@@ -13,6 +13,7 @@ project:
     license: MIT
     repo: https://github.com/bearz-io/jsr/npm/bearz/runtime-info
 type: library
+platform: node
 tags:
   - node
   - runtime-info

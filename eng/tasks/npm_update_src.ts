@@ -83,7 +83,7 @@ for await (
                 }
 
                 if (line.startsWith("const test = Deno.test;")) {
-                    newLines.push("const { test } = await import('vitest')");
+                    newLines.push("const { test } = await import(\"vitest\")");
                     update = true;
                     i++;
                     continue;

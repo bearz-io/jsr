@@ -13,6 +13,7 @@ project:
     license: MIT
     repo: https://github.com/bearz-io/jsr/npm/bearz/assert
 type: library
+platform: node
 tags:
   - node
   - assert

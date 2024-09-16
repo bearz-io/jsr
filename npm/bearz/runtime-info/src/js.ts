@@ -46,7 +46,7 @@ const userAgent = nav?.userAgent as string | undefined;
 /**
  * Returns `true` if the runtime is `cloudflare`, otherwise, `false`.
  */
-export const CLOUDFLARE: boolean = (userAgent?.includes("Cloudflare-Workers")) || false;
+export const CLOUDFLARE: boolean = userAgent?.includes("Cloudflare-Workers") || false;
 
 /**
  * Returns `true` if the runtime is a  `browser`, otherwise, `false`.

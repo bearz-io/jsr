@@ -22,7 +22,7 @@
     },
 
     "tasks": {
-        "test": "echo \"$PWD\" && echo 'hello world' && deno test -A --unstable-ffi",
+        "test": "deno test -A --unstable-ffi",
         "npm:copy": "deno run -A ./eng/tasks/npm_update_src.ts",
         "doc:mod": "deno run -A ./eng/tasks/document_mod.ts",
         "lint": "deno lint",

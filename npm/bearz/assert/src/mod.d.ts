@@ -1,35 +1,10 @@
-declare const equal: <T>(actual: T, expected: T, message?: string) => void,
-    ok: (value: unknown, message?: string) => asserts value,
-    notOk: <T>(value: T, message?: string) => void,
-    throws: {
-        (fn: () => void, errMsgMatcher?: RegExp | string, ignored?: any, message?: string): void;
-        (
-            fn: () => void,
-            errorLike?: Chai.ErrorConstructor | Error | null,
-            errMsgMatcher?: RegExp | string | null,
-            message?: string,
-        ): void;
-    },
-    fail: {
-        (message?: string): never;
-        <T>(actual: T, expected: T, message?: string, operator?: Chai.Operator): never;
-    },
-    exists: <T>(value: T, message?: string) => asserts value is NonNullable<T>,
-    strictEqual: <T>(actual: T, expected: T, message?: string) => void,
-    notEqual: <T>(actual: T, expected: T, message?: string) => void,
-    notStrictEqual: <T>(actual: T, expected: T, message?: string) => void,
-    match: (value: string, regexp: RegExp, message?: string) => void,
-    notMatch: (expected: any, regexp: RegExp, message?: string) => void,
-    instanceOf: <T>(
-        value: unknown,
-        constructor: Chai.Constructor<T>,
-        message?: string,
-    ) => asserts value is T,
-    notInstanceOf: <T, U>(
-        value: T,
-        type: Chai.Constructor<U>,
-        message?: string,
-    ) => asserts value is Exclude<T, U>;
+declare const equal: <T>(actual: T, expected: T, message?: string) => void, ok: (value: unknown, message?: string) => asserts value, notOk: <T>(value: T, message?: string) => void, throws: {
+    (fn: () => void, errMsgMatcher?: RegExp | string, ignored?: any, message?: string): void;
+    (fn: () => void, errorLike?: Chai.ErrorConstructor | Error | null, errMsgMatcher?: RegExp | string | null, message?: string): void;
+}, fail: {
+    (message?: string): never;
+    <T>(actual: T, expected: T, message?: string, operator?: Chai.Operator): never;
+}, exists: <T>(value: T, message?: string) => asserts value is NonNullable<T>, strictEqual: <T>(actual: T, expected: T, message?: string) => void, notEqual: <T>(actual: T, expected: T, message?: string) => void, notStrictEqual: <T>(actual: T, expected: T, message?: string) => void, match: (value: string, regexp: RegExp, message?: string) => void, notMatch: (expected: any, regexp: RegExp, message?: string) => void, instanceOf: <T>(value: unknown, constructor: Chai.Constructor<T>, message?: string) => asserts value is T, notInstanceOf: <T, U>(value: T, type: Chai.Constructor<U>, message?: string) => asserts value is Exclude<T, U>;
 /**
  * Use this to assert unreachable code.
  *
@@ -76,12 +51,7 @@ declare const no: <T>(value: T, message?: string) => void;
  * @param msgMatches The optional string or RegExp to assert in the error message.
  * @param msg The optional message to display if the assertion fails.
  */
-declare function isError<E extends Error = Error>(
-    error: unknown,
-    ErrorClass?: new (...args: any[]) => E,
-    msgMatches?: string | RegExp,
-    msg?: string,
-): asserts error is E;
+declare function isError<E extends Error = Error>(error: unknown, ErrorClass?: new (...args: any[]) => E, msgMatches?: string | RegExp, msg?: string): asserts error is E;
 /**
  * Use this to stub out methods that will throw when invoked.
  *
@@ -136,41 +106,8 @@ declare function rejects(fn: () => PromiseLike<unknown>, msg?: string): Promise<
  * @param msg The optional message to display if the assertion fails.
  * @returns The promise which resolves to the thrown error.
  */
-declare function rejects<E extends Error = Error>(
-    fn: () => PromiseLike<unknown>,
-    ErrorClass: new (...args: any[]) => E,
-    msgIncludes?: string,
-    msg?: string,
-): Promise<E>;
-export {
-    almostEqual,
-    arrayIncludes,
-    ok as assert,
-    equal,
-    exists,
-    fail,
-    notOk as falsy,
-    greater,
-    greaterOrEqual,
-    instanceOf,
-    isError,
-    less,
-    lessOrEqual,
-    match,
-    no,
-    notEqual,
-    notInstanceOf,
-    notMatch,
-    notStrictEqual,
-    objectMatch,
-    ok,
-    rejects,
-    strictEqual,
-    stringIncludes,
-    throws,
-    unimplemented,
-    unreachable,
-};
+declare function rejects<E extends Error = Error>(fn: () => PromiseLike<unknown>, ErrorClass: new (...args: any[]) => E, msgIncludes?: string, msg?: string): Promise<E>;
+export { almostEqual, arrayIncludes, ok as assert, equal, exists, fail, notOk as falsy, greater, greaterOrEqual, instanceOf, isError, less, lessOrEqual, match, no, notEqual, notInstanceOf, notMatch, notStrictEqual, objectMatch, ok, rejects, strictEqual, stringIncludes, throws, unimplemented, unreachable, };
 declare const _default: {
     ok: (value: unknown, message?: string) => asserts value;
     falsy: <T>(value: T, message?: string) => void;
@@ -179,21 +116,12 @@ declare const _default: {
     strictEqual: <T>(actual: T, expected: T, message?: string) => void;
     throws: {
         (fn: () => void, errMsgMatcher?: RegExp | string, ignored?: any, message?: string): void;
-        (
-            fn: () => void,
-            errorLike?: Chai.ErrorConstructor | Error | null,
-            errMsgMatcher?: RegExp | string | null,
-            message?: string,
-        ): void;
+        (fn: () => void, errorLike?: Chai.ErrorConstructor | Error | null, errMsgMatcher?: RegExp | string | null, message?: string): void;
     };
     match: (value: string, regexp: RegExp, message?: string) => void;
     notMatch: (expected: any, regexp: RegExp, message?: string) => void;
     exists: <T>(value: T, message?: string) => asserts value is NonNullable<T>;
-    instanceOf: <T>(
-        value: unknown,
-        constructor: Chai.Constructor<T>,
-        message?: string,
-    ) => asserts value is T;
+    instanceOf: <T>(value: unknown, constructor: Chai.Constructor<T>, message?: string) => asserts value is T;
     arrayIncludes: typeof arrayIncludes;
     almostEqual: typeof almostEqual;
     greater: typeof greater;
@@ -202,11 +130,7 @@ declare const _default: {
     lessOrEqual: typeof lessOrEqual;
     objectMatch: typeof objectMatch;
     stringIncludes: typeof stringIncludes;
-    notInstanceOf: <T, U>(
-        value: T,
-        type: Chai.Constructor<U>,
-        message?: string,
-    ) => asserts value is Exclude<T, U>;
+    notInstanceOf: <T, U>(value: T, type: Chai.Constructor<U>, message?: string) => asserts value is Exclude<T, U>;
     notStrictEqual: <T>(actual: T, expected: T, message?: string) => void;
     isError: typeof isError;
     fail: {
