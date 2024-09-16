@@ -2,28 +2,21 @@
 tasks:
   test:
     description: Run the deno tests
-    script: deno task test "$MOON_PROJECT_ROOT"
+    script: deno test -A --unstable-ffi
     type: test
     deps:
       - lint
 
   lint:
     description: Lint the typescript
-    command: deno task lint "$MOON_PROJECT_ROOT/**/*.ts"
+    command: deno lint
     type: test
     options: 
       os: linux
 
-  lint-win:
-    description: Lint the typescript
-    command: deno task lint "$MOON_PROJECT_ROOT\\**\\*.ts"
-    type: test
-    options: 
-      os: windows
-
   fmt:
     description: Format the typescript
-    command: deno task fmt "$MOON_PROJECT_ROOT"
+    command: deno fmt
     local: true
 
   publish-dry:
